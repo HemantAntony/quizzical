@@ -56,7 +56,38 @@ body {
 }
 
 .quiz {
+  padding: 50px 80px;
   position: absolute;
   left: 0;
   top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.option {
+  margin-right: 20px;
+  padding: 2px 20px;
+  height: 30px;
+  font-size: 1rem;
+  border-radius: 11px;
+  background-color: transparent;
+}
+
+.option:active {
+  border-style: outset;
+}
+
+.option:focus {
+  outline: none;
+}
+
+.selected {
+  background-color: #D6DBF5;
+  border: none;
+}
+
+.quiz--divider {
+  margin: 20px 0px;
+  width: 100%;
+  border-top: 1px solid #DBDEF0;
 }
