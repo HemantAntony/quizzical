@@ -10,6 +10,7 @@ body {
 }
 
 .App {
+  position: relative;
   width: 60vh;
   height: 60vh;
   background-color: #F5F7FB;
@@ -52,4 +53,10 @@ body {
 
 .start--button:focus {
   outline: none;
+}
+
+.quiz {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
