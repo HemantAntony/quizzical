@@ -69,15 +69,18 @@ body {
 .quiz--questions {
   width: 100%;
   flex-grow: 1;
-  overflow: hidden;
+  /* overflow-y: scroll; */
+  overflow-x: hidden;
+  /* overflow: scroll; */
 }
 
 .quiz--question {
   color: #293264;
+  margin: 0;
 }
 
 .option {
-  margin-right: 20px;
+  margin: 20px 20px auto auto;
   padding: 2px 20px;
   height: 30px;
   font-family: Inter, sans-serif;
@@ -109,7 +112,7 @@ body {
 .quiz--check {
   margin: 20px auto auto;
   width: 160px;
-  height: 90px;
+  min-height: 50px;
   color: #F5F7FB;
   background-color: #4D5B9E;
   border: none;
