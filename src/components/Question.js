@@ -1,7 +1,6 @@
 import Option from "./Option"
 
-export default function Question({questionId, question, value, selectedIndex, correctIndex, optionClicked}) {
-
+export default function Question({questionId, question, value, selectedIndex, correctIndex, showAnswer, optionClicked}) {
     console.log(question, selectedIndex)
     const values = value.map((option, index) => {
         return <Option key={index} value={option} selected={index === selectedIndex} optionClicked={()=>optionClicked(index)}/>

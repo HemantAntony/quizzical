@@ -14,21 +14,34 @@ export default function Quiz() {
             }
 
             setQuestions(data.results.map((question, index) => {
-                return <Question
-                key={index}
-                questionId={index}
-                question={question.question}
-                value={[...question.incorrect_answers, question.correct_answer]}
-                correctIndex={-1}
-                optionClicked={(optionIndex) => {
-                    setQuestions(prevQuestions => prevQuestions.map(prevQuestion => {
-                        return prevQuestion.props.questionId === index ? {...prevQuestion, props: {...prevQuestion.props, selectedIndex: optionIndex}} : prevQuestion
-                    }))
-                }}
-                />
+                return {
+                    questionId: index,
+                    question: question.question,
+                    value:[...question.incorrect_answers, question.correct_answer],
+                    correctIndex: 3,
+                    showAnswer: false,
+                    optionClicked: (optionIndex) => {
+                        setQuestions(prevQuestions => prevQuestions.map(prevQuestion => {
+                            return prevQuestion.questionId === index ? {...prevQuestion, selectedIndex: optionIndex} : prevQuestion
+                        }))
+                    }
+                }
             }))
         })
     }, [])
+
+    const questionElements = questions.map((question) => {
+        return <Question
+            key={question.questionId}
+            questionId={question.questionId}
+            question={question.question}
+            value={question.value}
+            selectedIndex={question.selectedIndex}
+            correctIndex={question.correctIndex}
+            showAnswer={question.showAnswer}
+            optionClicked={question.optionClicked}
+        />
+    })
 
     function checkAnswers() {
 
@@ -36,7 +49,7 @@ export default function Quiz() {
     
     return (<div className="quiz">
         <div className="quiz--questions">
-            {questions}
+            {questionElements}
         </div>
         <button className="quiz--check" onClick={checkAnswers}>Check answers</button>
     </div>)

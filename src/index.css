@@ -80,7 +80,7 @@ body {
 .option {
   margin: 20px 20px auto auto;
   padding: 2px 20px;
-  height: 30px;
+  min-height: 30px;
   font-family: Inter, sans-serif;
   font-size: 0.9rem;
   border-radius: 11px;
