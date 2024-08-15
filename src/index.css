@@ -101,20 +101,51 @@ body {
   border: none;
 }
 
+.correct {
+  background-color: #94D7A2;
+  border: none;
+}
+
+.incorrect {
+  background-color: #F8BCBC;
+  border: none;
+  opacity: 0.5;
+}
+
 .quiz--divider {
   margin: 20px 0px;
   width: 100%;
   border-top: 1px solid #DBDEF0;
 }
 
+.quiz--question--box:last-child > hr {
+  border: none;
+}
+
+.quiz > .quiz--divider {
+  margin: 20px auto 30px;
+}
+
+.quiz--footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz--result {
+  font-family: Karla, sans-serif;
+  font-size: 1.1rem;
+  color: #293264;
+}
+
 .quiz--check {
-  margin: 20px auto auto;
+  margin-left: 15px;
   width: 160px;
-  min-height: 50px;
+  min-height: 40px;
   color: #F5F7FB;
   background-color: #4D5B9E;
   border: none;
-  border-radius: 17px;
+  border-radius: 13px;
   font-family: Inter, sans-serif;
   font-weight: 500;
 }

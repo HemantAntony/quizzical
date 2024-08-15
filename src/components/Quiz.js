@@ -3,6 +3,8 @@ import Question from "./Question"
 
 export default function Quiz() {
     const [questions, setQuestions] = React.useState([])
+    const [correctAnswers, setCorrectAnswers] = React.useState("")
+    const [showAnswers, setShowAnswers] = React.useState(false)
 
     
     React.useEffect(() => {
@@ -19,7 +21,7 @@ export default function Quiz() {
                     question: question.question,
                     value:[...question.incorrect_answers, question.correct_answer],
                     correctIndex: 3,
-                    showAnswer: false,
+                    selectedIndex: -1,
                     optionClicked: (optionIndex) => {
                         setQuestions(prevQuestions => prevQuestions.map(prevQuestion => {
                             return prevQuestion.questionId === index ? {...prevQuestion, selectedIndex: optionIndex} : prevQuestion
@@ -38,19 +40,34 @@ export default function Quiz() {
             value={question.value}
             selectedIndex={question.selectedIndex}
             correctIndex={question.correctIndex}
-            showAnswer={question.showAnswer}
+            showAnswer={showAnswers}
             optionClicked={question.optionClicked}
         />
     })
 
     function checkAnswers() {
+        if (showAnswers) {
+            console.log("Going to reset")
+            return
+        }
 
+        let correctAnswers = 0
+        questions.forEach(question => {
+            if (question.selectedIndex === question.correctIndex)
+                correctAnswers++
+        })
+        setCorrectAnswers(`${correctAnswers}/${questions.length}`)
+        setShowAnswers(true);
     }
     
     return (<div className="quiz">
         <div className="quiz--questions">
             {questionElements}
         </div>
-        <button className="quiz--check" onClick={checkAnswers}>Check answers</button>
+        <hr className="quiz--divider"/>
+        <div className="quiz--footer">
+            { showAnswers && <h3 className="quiz--result">You scored {correctAnswers} correct answers</h3> }
+            <button className="quiz--check" onClick={checkAnswers}>{showAnswers ? "Play again" : "Check answers"}</button>
+        </div>
     </div>)
 }

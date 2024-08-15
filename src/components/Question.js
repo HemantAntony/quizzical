@@ -1,12 +1,38 @@
 import Option from "./Option"
 
+export const OptionState = Object.freeze({
+    Default:-1,
+    Selected:0,
+    Incorrect:1,
+    Correct:2
+})
+
 export default function Question({questionId, question, value, selectedIndex, correctIndex, showAnswer, optionClicked}) {
-    console.log(question, selectedIndex)
     const values = value.map((option, index) => {
-        return <Option key={index} value={option} selected={index === selectedIndex} optionClicked={()=>optionClicked(index)}/>
+        var optionState = OptionState.Default
+
+        if (selectedIndex === index) {
+            optionState = OptionState.Selected
+        }
+        
+        if (showAnswer && correctIndex === index) {
+            optionState = OptionState.Correct
+        } else if (showAnswer && selectedIndex === index) {
+            optionState = OptionState.Incorrect
+        }
+
+        return <Option
+            key={index}
+            value={option}
+            optionState={optionState}
+            optionClicked={()=>{
+                if (!showAnswer)
+                    optionClicked(index)
+            }}
+        />
     })
     
-    return (<div>
+    return (<div className="quiz--question--box">
         <h3 className="quiz--question">{question}</h3>
         {values}
         <hr className="quiz--divider"/>
