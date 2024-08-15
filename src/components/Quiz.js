@@ -13,30 +13,31 @@ export default function Quiz() {
                 return
             }
 
-            console.log(data.results.map((question, index) => {
-                return <Question
-                key={index}
-                questionId={index}
-                question={question.question}
-                value={[...question.incorrect_answers, question.correct_answer]}
-                />
-            }))
-
             setQuestions(data.results.map((question, index) => {
                 return <Question
                 key={index}
                 questionId={index}
                 question={question.question}
                 value={[...question.incorrect_answers, question.correct_answer]}
+                correctIndex={-1}
+                optionClicked={(optionIndex) => {
+                    setQuestions(prevQuestions => prevQuestions.map(prevQuestion => {
+                        return prevQuestion.props.questionId === index ? {...prevQuestion, props: {...prevQuestion.props, selectedIndex: optionIndex}} : prevQuestion
+                    }))
+                }}
                 />
             }))
         })
     }, [])
+
+    function checkAnswers() {
+
+    }
     
     return (<div className="quiz">
         <div className="quiz--questions">
             {questions}
         </div>
-        <button className="quiz--check">Check answers</button>
+        <button className="quiz--check" onClick={checkAnswers}>Check answers</button>
     </div>)
 }

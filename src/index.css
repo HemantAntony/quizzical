@@ -69,9 +69,7 @@ body {
 .quiz--questions {
   width: 100%;
   flex-grow: 1;
-  /* overflow-y: scroll; */
   overflow-x: hidden;
-  /* overflow: scroll; */
 }
 
 .quiz--question {
