@@ -7,7 +7,7 @@ function App() {
   const [questions, setQuestions] = React.useState([])
   const [isError, setIsError] = React.useState(false)
 
-  function fetchQuestions() {
+  function fetchQuestions() { 
     fetch("https://opentdb.com/api.php?amount=10&type=multiple")
     .then(res => {
       if (res.status === 429) {
@@ -21,11 +21,15 @@ function App() {
         }
 
         setQuestions(data.results.map((question, index) => {
+            const correctIndex = Math.floor(Math.random() * 4)
+            console.log(correctIndex)
+            const value = question.incorrect_answers.toSpliced(correctIndex, 0, question.correct_answer)
             return {
                 questionId: index,
                 question: question.question,
-                value:[...question.incorrect_answers, question.correct_answer],
-                correctIndex: 3,
+                // value:[...question.incorrect_answers, question.correct_answer],
+                value: value,
+                correctIndex: correctIndex,
                 selectedIndex: -1,
                 optionClicked: (optionIndex) => {
                     setQuestions(prevQuestions => prevQuestions.map(prevQuestion => {
