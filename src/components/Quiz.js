@@ -1,7 +1,7 @@
 import React from "react"
 import Question from "./Question"
 
-export default function Quiz({questions}) {
+export default function Quiz({questions, restart}) {
     const [correctAnswers, setCorrectAnswers] = React.useState("")
     const [showAnswers, setShowAnswers] = React.useState(false)
 
@@ -20,7 +20,9 @@ export default function Quiz({questions}) {
 
     function checkAnswers() {
         if (showAnswers) {
-            console.log("Going to reset")
+            setCorrectAnswers("")
+            setShowAnswers(false)
+            restart()
             return
         }
 

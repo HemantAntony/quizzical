@@ -7,7 +7,7 @@ function App() {
   const [questions, setQuestions] = React.useState([])
   const [isError, setIsError] = React.useState(false)
 
-  React.useEffect(() => {
+  function fetchQuestions() {
     fetch("https://opentdb.com/api.php?amount=10&type=multiple")
     .then(res => {
       if (res.status === 429) {
@@ -35,7 +35,9 @@ function App() {
             }
         }))
     })
-  }, [])
+  }
+
+  React.useEffect(fetchQuestions, [])
 
   let message
   if (isError) {
@@ -48,7 +50,7 @@ function App() {
     <div className="App">
       { questions.length === 0 && message }
       { questions.length !== 0 && start && <Start startQuiz={() => setStart(false)} /> }
-      { questions.length !== 0 && !start && <Quiz questions={questions}/> }
+      { questions.length !== 0 && !start && <Quiz questions={questions} restart={() => fetchQuestions() }/> }
     </div>
   );
 }
