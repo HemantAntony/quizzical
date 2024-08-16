@@ -94,10 +94,18 @@ body {
   border-radius: 11px;
   background-color: transparent;
   color: #293264;
+  transition-duration: 100ms;
+  transition-timing-function: ease-in;
+}
+
+.option:hover {
+  background-color: #e3e6f5;
+  border-color: #ffffff00;
 }
 
 .option:active {
   border-style: solid;
+  background-color: #D6DBF5;
 }
 
 .option:focus {
