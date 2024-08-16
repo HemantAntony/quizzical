@@ -164,4 +164,9 @@ body {
   border-radius: 13px;
   font-family: Inter, sans-serif;
   font-weight: 500;
+  transition-duration: 300ms;
+}
+
+.quiz--check:hover {
+  background-color: #5a69b6;
 }
