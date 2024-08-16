@@ -27,7 +27,6 @@ function App() {
             return {
                 questionId: index,
                 question: question.question,
-                // value:[...question.incorrect_answers, question.correct_answer],
                 value: value,
                 correctIndex: correctIndex,
                 selectedIndex: -1,
