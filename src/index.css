@@ -97,7 +97,7 @@ body {
 }
 
 .option:active {
-  border-style: outset;
+  border-style: solid;
 }
 
 .option:focus {
@@ -106,18 +106,18 @@ body {
 
 .selected {
   background-color: #D6DBF5;
-  border: none;
+  border-color: #ffffff00;
 }
 
 .correct {
   background-color: #94D7A2;
-  border: none;
+  border-color: #ffffff00;
 }
 
 .incorrect {
   background-color: #F8BCBC;
-  border: none;
   opacity: 0.5;
+  border-color: #ffffff00;
 }
 
 .quiz--divider {

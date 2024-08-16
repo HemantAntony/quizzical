@@ -8,7 +8,6 @@ export default function Quiz({questions, restart}) {
     const questionElements = questions.map((question) => {
         return <Question
             key={question.questionId}
-            questionId={question.questionId}
             question={question.question}
             value={question.value}
             selectedIndex={question.selectedIndex}

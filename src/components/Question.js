@@ -7,7 +7,7 @@ export const OptionState = Object.freeze({
     Correct:2
 })
 
-export default function Question({questionId, question, value, selectedIndex, correctIndex, showAnswer, optionClicked}) {
+export default function Question({question, value, selectedIndex, correctIndex, showAnswer, optionClicked}) {
     const values = value.map((option, index) => {
         var optionState = OptionState.Default
 
