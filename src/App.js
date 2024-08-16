@@ -3,7 +3,7 @@ import Start from "./components/Start"
 import Quiz from "./components/Quiz"
 
 function App() {
-  const [start, setStart] = React.useState(false)
+  const [start, setStart] = React.useState(true)
   const [questions, setQuestions] = React.useState([])
   const [isError, setIsError] = React.useState(false)
 

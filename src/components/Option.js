@@ -10,6 +10,6 @@ export default function Option({value, optionState, optionClicked}) {
         state = "incorrect"
     }
     return (<button className={`option ${state}`} onClick={optionClicked}>
-        {value.replace(/&quot;/g, '"')}
+        {value.replace(/&quot;/g, '"').replace(/&#039;/g, "'")}
     </button>)
 }

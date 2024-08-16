@@ -33,7 +33,7 @@ export default function Question({questionId, question, value, selectedIndex, co
     })
     
     return (<div className="quiz--question--box">
-        <h3 className="quiz--question">{question.replace(/&quot;/g, '"')}</h3>
+        <h3 className="quiz--question">{question.replace(/&quot;/g, '"').replace(/&#039;/g, "'")}</h3>
         {values}
         <hr className="quiz--divider"/>
     </div>)
