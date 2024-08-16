@@ -22,7 +22,6 @@ function App() {
 
         setQuestions(data.results.map((question, index) => {
             const correctIndex = Math.floor(Math.random() * 4)
-            console.log(correctIndex)
             const value = question.incorrect_answers.toSpliced(correctIndex, 0, question.correct_answer)
             return {
                 questionId: index,
